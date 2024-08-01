@@ -1,0 +1,54 @@
+plugins {
+    id "com.android.library"
+    id "kotlin-android"
+    id "maven-publish"
+}
+
+android {
+    namespace "com.android.base.imageloader"
+
+    compileSdk 34
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 34
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+}
+
+dependencies {
+    implementation "androidx.annotation:annotation:1.8.1"
+    implementation "com.jakewharton.timber:timber:4.7.1"
+    implementation "com.github.bumptech.glide:glide:4.16.0"
+    implementation "com.github.bumptech.glide:okhttp3-integration:4.11.0"
+}
+
+tasks.register('javadoc', Javadoc) {
+    options.encoding = "utf-8"
+}
+
+group = 'io.github.ztiany'
+version = '1.0'
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'io.github.ztiany'
+                artifactId = 'android-imageloader'
+                version = '1.0.2'
+            }
+        }
+    }
+}
