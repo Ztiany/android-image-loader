@@ -111,7 +111,6 @@ public class ImageListFragment extends Fragment {
             mImageLoader.setListener(url, mProgressListener);
             mImageLoader.display(ImageListFragment.this, image, url, mDisplayConfig, mLoadListenerAdapter);
         }
-
     }
 
     private class ProgressAdapter extends RecyclerView.Adapter<ProgressViewHolder> {

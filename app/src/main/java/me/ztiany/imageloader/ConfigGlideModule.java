@@ -17,10 +17,8 @@ public class ConfigGlideModule extends ProgressGlideModule {
 
     @Override
     public void applyOptions(@NonNull final Context context, GlideBuilder builder) {
-        //内存缓存相关，默认是24m
         int memoryCacheSizeBytes = 1024 * 1024 * 20;
         builder.setMemoryCache(new LruResourceCache(memoryCacheSizeBytes));
-        //设置磁盘缓存及其路径
         int maxCacheSize = 100 * 1024 * 1024;
         String cacheFileName = "imgCache";
         builder.setDiskCache(new ExternalCacheDiskCacheFactory(context, cacheFileName, maxCacheSize));

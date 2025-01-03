@@ -5,17 +5,19 @@ import androidx.annotation.NonNull;
 
 public class ProgressInfo {
 
-    //当前下载的总长度
     private long currentBytes;
-    //数据总长度
+
     private long contentLength;
-    //本次调用距离上一次被调用所间隔的毫秒值
+
     private long intervalTime;
-    //本次调用距离上一次被调用的间隔时间内下载的 byte 长度
+
+    /**
+     * the total bytes that have been transferred since the last time this method was called.
+     */
     private long eachBytes;
-    //请求的 ID
+
     private final long id;
-    //进度是否完成
+
     private boolean finish;
 
     public ProgressInfo(long id) {
@@ -67,7 +69,7 @@ public class ProgressInfo {
     }
 
     /**
-     * 获取下载比例(0 - 1)
+     * Get the download progress, from 0 to 1.
      */
     public float getProgress() {
         if (getCurrentBytes() <= 0 || getContentLength() <= 0) {
@@ -77,7 +79,7 @@ public class ProgressInfo {
     }
 
     /**
-     * 获取上传或下载网络速度，单位为byte/s
+     * Get the upload or download network speed, in bytes per second.
      */
     public long getSpeed() {
         if (getEachBytes() <= 0 || getIntervalTime() <= 0) {
